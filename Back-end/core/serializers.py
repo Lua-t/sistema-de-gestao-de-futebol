@@ -3,6 +3,7 @@ from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from django.utils.encoding import force_str
 from django.utils.http import urlsafe_base64_decode
 from rest_framework import serializers
+from .models import Jogador
 
 Organizador = get_user_model()
 
@@ -58,4 +59,15 @@ class ResetSenhaSerializer(serializers.Serializer):
 class PerfilSerializer(serializers.ModelSerializer):
     class Meta:
         model = Organizador
-        fields=('first_name','last_name', 'email')
+        fields=('first_name', 'last_name', 'email')
+
+class JogadorSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Jogador
+        fields = ('id', 'nome', 'nivel_estrelas', 'ativo', 'data_cadastro')
+        read_only_fields = ('id', 'data_cadastro')
+
+    def validate_nivel_estrelas(self, value):
+        if value % 0.5 != 0:
+            raise serializers.ValidationError('O nível deve ser múltiplo de 0.5.')
+        return value
