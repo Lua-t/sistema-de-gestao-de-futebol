@@ -1,377 +1,519 @@
-# ⚽ FutGestão - Sistema de Gerenciamento de Peladas
+# ⚽ FutGestao - Sistema de Gerenciamento de Peladas
 
-Sistema completo para organização e gestão de peladas de futebol, desenvolvido com arquitetura frontend/backend separados.
-
-## 👥 Equipe de Desenvolvimento
-
-### Frontend
-- **Fabíula de Araujo Brandão** - Desenvolvedora Frontend
-  - Responsável por: Interface HTML/CSS/JS, experiência do usuário, design responsivo
-
-### Backend
-- **Laura Carolina** - Desenvolvedora Backend Lead
-  - Responsável por: Arquitetura do servidor, APIs REST, autenticação JWT
-
-- **Vinícius Abreu Vasconcelos dos Santos** - Desenvolvedor Backend
-  - Responsável por: Socket.IO, gerenciamento de dados, lógica de negócios
+O **FutGestao** é uma solução completa, moderna e de alto desempenho para organização, sorteio e gestão de peladas e campeonatos de futebol amador.  
+O sistema foi desenvolvido com foco em **performance**, **responsividade**, **tempo real** e **facilidade de uso**, permitindo que organizadores e jogadores tenham uma experiência fluida tanto no desktop quanto em dispositivos mobile.
 
 ---
 
-## 📋 Sobre o Projeto
+# 🚀 Deploy no Vercel
 
-O FutGestão é uma solução moderna e completa para organizadores de peladas que precisam:
-- Cadastrar e gerenciar jogadores com níveis de habilidade
-- Agendar e organizar partidas
-- Controlar listas de presença em tempo real
-- Confirmar participação e pagamentos
-- Visualizar estatísticas e histórico
+Acesse a aplicação online:
 
-### 🎨 Características Principais
-
-✅ **Frontend Puro** - HTML5, CSS3 e JavaScript vanilla (sem frameworks)
-✅ **Backend Express** - API REST robusta com autenticação JWT
-✅ **Socket.IO** - Atualizações em tempo real nas listas de jogadores
-✅ **LocalStorage** - Persistência de dados local (desenvolvimento)
-✅ **Design Responsivo** - Interface adaptável para desktop e mobile
-✅ **Autenticação Segura** - Sistema de login com bcrypt e JWT
+🔗 https://sistema-de-gestao-de-futebol-amador.vercel.app
 
 ---
 
-## 🚀 Instalação e Execução
+# 👥 Equipe de Desenvolvimento
 
-### Pré-requisitos
+## Frontend
+### Fabíula de Araujo Brandão — Desenvolvedora Frontend
+Responsável por:
+- Interface React + TypeScript
+- Experiência do usuário (UX/UI)
+- Design responsivo
+- Componentes reutilizáveis
+- Integração Frontend/API
 
-- Node.js (versão 16 ou superior)
-- npm (geralmente vem com Node.js)
+---
 
-### Passo 1: Clone ou baixe o projeto
+## Backend
+### Laura Carolina — Desenvolvedora Backend Lead
+Responsável por:
+- Arquitetura Node.js
+- APIs REST
+- Autenticação JWT
+- Estrutura de segurança
+- Integração backend/frontend
+
+### Vinícius Abreu Vasconcelos dos Santos — Desenvolvedor Backend
+Responsável por:
+- Modelagem de dados
+- Regras de negócio
+- Prisma ORM
+- WebSockets
+- Persistência e sincronização
+
+---
+
+# 📝 Sobre o Projeto
+
+O FutGestao foi criado para facilitar completamente a organização de peladas e campeonatos amadores.
+
+O sistema permite:
+
+- Cadastro de jogadores com nível técnico em estrelas
+- Criação e gerenciamento de peladas
+- Controle de presença e pagamentos
+- Sorteio automático de times balanceados
+- Estatísticas individuais
+- Campeonatos completos
+- Atualizações em tempo real
+- Controle financeiro
+- Painel ao vivo com cronômetro
+
+---
+
+# 🚀 Novidade Tecnológica: Sincronização Local + Tempo Real
+
+O FutGestao possui uma arquitetura híbrida moderna focada em desempenho:
+
+## ⚡ Armazenamento Local Inteligente
+Os dados podem ser mantidos em:
+- `localStorage`
+- MongoDB Atlas
+- Prisma + SQLite/PostgreSQL
+
+Dependendo da configuração do ambiente.
+
+---
+
+## 🔄 WebSockets com Socket.IO
+As alterações são sincronizadas em tempo real entre todos os dispositivos conectados:
+
+- Atualização instantânea do placar
+- Presença sincronizada
+- Gols ao vivo
+- Controle de cronômetro
+- Eventos da partida
+- Ranking atualizado automaticamente
+
+---
+
+# 🛠️ Tecnologias Utilizadas
+
+## Frontend
+
+| Tecnologia | Versão | Função |
+|---|---|---|
+| React | 19.0.0 | Framework Frontend |
+| TypeScript | 5.8.2 | Tipagem estática |
+| Tailwind CSS | 4.1.14 | Estilização |
+| React Router | 7.14.0 | Rotas |
+| Axios | 1.14.0 | Cliente HTTP |
+| React Hot Toast | 2.6.0 | Notificações |
+| Lucide React | 0.546.0 | Ícones |
+| Socket.IO Client | 4.8.3 | Tempo real |
+
+---
+
+## Backend
+
+| Tecnologia | Versão | Função |
+|---|---|---|
+| Node.js | 18+ | Runtime |
+| Express | 4.21.2 | API REST |
+| MongoDB | 7.2.0 | Banco NoSQL |
+| Prisma ORM | Latest | ORM |
+| JWT | 9.0.3 | Autenticação |
+| Socket.IO | 4.8.3 | Comunicação real-time |
+| bcryptjs | 3.0.3 | Hash de senhas |
+| CORS | 2.8.6 | Segurança CORS |
+
+---
+
+# 🎯 Principais Funcionalidades
+
+## 👤 Sistema de Usuários
+- Cadastro de organizadores
+- Login seguro JWT
+- Sessões autenticadas
+
+---
+
+## ⚽ Gestão de Jogadores
+- Cadastro completo
+- Avaliação por estrelas (0.5 → 5.0)
+- Histórico individual
+- Estatísticas
+
+---
+
+## 🏟️ Gestão de Peladas
+- Agendamento
+- Controle de presença
+- Lista de espera
+- Controle financeiro
+
+---
+
+## 🎲 Sorteio Inteligente
+- Balanceamento automático
+- Diferença máxima de força: ≤ 0.5 estrelas
+- Sorteio aleatório
+- Drag & Drop manual
+
+---
+
+## 🔴 Jogo ao Vivo
+- Cronômetro
+- Placar em tempo real
+- Gols e assistências
+- Cartões
+- Eventos sincronizados
+
+---
+
+## 🏆 Campeonatos
+- Tabela automática
+- Classificação
+- Artilharia
+- Ranking
+
+---
+
+# 📅 Planejamento por Sprints
+
+## ✅ Sprints 1-2 — Login & Segurança
+- Cadastro
+- JWT
+- Dashboard inicial
+
+---
+
+## ✅ Sprints 3-4 — Cadastro de Jogadores
+- Jogadores
+- Peladas
+- Presença
+
+---
+
+## ✅ Sprints 5-6 — Sorteio Balanceado
+- Algoritmo inteligente
+- Balanceamento automático
+- Lista de próximas
+
+---
+
+## ✅ Sprints 7-8 — Partida Ao Vivo
+- WebSocket
+- Cronômetro
+- Súmulas
+
+---
+
+## ✅ Sprints 9-10 — Estatísticas & Financeiro
+- Rateios
+- Radar SVG
+- Estatísticas acumuladas
+
+---
+
+## ✅ Sprints 11-12 — Campeonatos
+- Tabelas
+- Classificação
+- Confrontos automáticos
+
+---
+
+# 💻 Instalação e Execução Local
+
+## Pré-requisitos
+- Node.js 18+
+- npm ou yarn
+- MongoDB Atlas (opcional)
+
+---
+
+## 1️⃣ Clone o projeto
 
 ```bash
-# Se estiver usando git
 git clone <url-do-repositorio>
 cd futgestao
-
-# Ou baixe e extraia o arquivo ZIP
 ```
 
-### Passo 2: Instale as dependências do Backend
+---
+
+## 2️⃣ Instale as dependências
 
 ```bash
-cd backend
 npm install
 ```
 
-### Passo 3: Inicie o servidor
+---
+
+## 3️⃣ Configure o ambiente
+
+Crie o arquivo `.env`:
+
+```env
+# MongoDB
+MONGODB_URI=
+MONGODB_NAME=
+
+# Prisma (Opcional)
+DATABASE_URL="postgresql://user:password@localhost:5432/futgestao"
+
+# JWT
+JWT_SECRET=jwt-futgestao-2026-x9y8z7w6v5u4t3s2r1q0p9o8n7m6l5k4
+```
+
+---
+
+## 4️⃣ Execute Prisma (Opcional)
 
 ```bash
-npm start
+npx prisma db push
 ```
 
-O servidor será iniciado na porta **3000** e você verá:
+---
 
-```
-╔═══════════════════════════════════════════════════════╗
-║           🎯 FutGestão Backend Iniciado               ║
-╠═══════════════════════════════════════════════════════╣
-║  Servidor rodando em: http://localhost:3000           ║
-║  Status: ✅ Operacional                               ║
-║  Socket.IO: ✅ Ativo                                  ║
-╚═══════════════════════════════════════════════════════╝
+## 5️⃣ Inicie o sistema
+
+```bash
+npm run dev
 ```
 
-### Passo 4: Acesse o sistema
+A aplicação ficará disponível em:
 
-Abra seu navegador e acesse:
-
-```
+```txt
 http://localhost:3000
 ```
 
-**Pronto!** O sistema está funcionando. 🎉
-
 ---
 
-## 📁 Estrutura do Projeto
+# 📂 Estrutura do Projeto
 
-```
+```txt
 futgestao/
 │
-├── backend/                 # Servidor Node.js
-│   ├── server.js           # Servidor Express + Socket.IO
-│   ├── package.json        # Dependências do backend
-│   └── node_modules/       # Módulos instalados (gerado após npm install)
+├── src/
+│   ├── components/
+│   ├── pages/
+│   ├── context/
+│   ├── services/
+│   ├── hooks/
+│   ├── lib/
+│   └── utils/
 │
-├── frontend/               # Cliente Web
-│   ├── index.html         # Página principal
-│   ├── styles.css         # Estilos CSS
-│   └── app.js             # Lógica JavaScript
+├── backend/
 │
-└── README.md              # Este arquivo
+├── prisma/
+│
+├── public/
+│
+├── server.ts
+├── vercel.json
+├── package.json
+└── README.md
 ```
 
 ---
 
-## 🔧 Tecnologias Utilizadas
+# ☁️ Deploy no Vercel
 
-### Backend
-| Tecnologia | Versão | Função |
-|-----------|--------|--------|
-| Node.js | 16+ | Runtime JavaScript |
-| Express | 4.21.2 | Framework web |
-| Socket.IO | 4.8.3 | Comunicação em tempo real |
-| JWT | 9.0.3 | Autenticação segura |
-| Bcrypt | 3.0.3 | Criptografia de senhas |
-| CORS | 2.8.6 | Controle de acesso |
+O sistema está preparado para deploy automático:
 
-### Frontend
-| Tecnologia | Função |
-|-----------|--------|
-| HTML5 | Estrutura |
-| CSS3 | Estilização |
-| JavaScript | Lógica de interface |
-| Socket.IO Client | Conexão websocket |
-| Fetch API | Requisições HTTP |
+## Frontend
+- Build Vite
+- React SPA
 
----
+## Backend
+- Serverless Functions
+- Express API
 
-## 🎮 Como Usar o Sistema
+## Variáveis Necessárias
+Configure na Vercel:
 
-### 1️⃣ Primeiro Acesso
-
-1. Ao acessar `http://localhost:3000`, você verá a tela de login
-2. Clique em **"Cadastre-se"** para criar sua conta
-3. Preencha: Nome, Email, Senha (mínimo 7 caracteres)
-4. Clique em **"Cadastrar"**
-
-### 2️⃣ Gerenciar Jogadores
-
-1. No menu lateral, clique em **"Jogadores"**
-2. Clique no botão **"➕ Novo Jogador"**
-3. Informe o nome e selecione o nível de estrelas (0.5 a 5.0)
-4. Clique em **"Salvar"**
-5. Você pode editar níveis ou ativar/desativar jogadores
-
-### 3️⃣ Agendar Pelada
-
-1. No menu lateral, clique em **"Peladas"**
-2. Clique no botão **"➕ Nova Pelada"**
-3. Preencha os dados:
-   - Título (ex: "Pelada de Sexta")
-   - Data e horário
-   - Local
-   - Duração em minutos
-   - Número de jogadores por time
-   - Quantidade de times simultâneos
-4. Clique em **"Agendar"**
-
-### 4️⃣ Gerenciar Lista de Presença
-
-1. Na tela de **"Peladas"**, clique em uma pelada
-2. Você verá os detalhes e a lista de inscritos
-3. Clique em **"Adicionar Jogador"** para incluir participantes
-4. Use os botões para:
-   - ✅ Confirmar presença
-   - ⬆️⬇️ Reordenar lista
-   - ❌ Remover da lista
-5. Quando houver jogadores suficientes, clique em **"▶️ Iniciar Pelada"**
-
-### 5️⃣ Dashboard
-
-O Dashboard mostra:
-- Total de jogadores cadastrados
-- Número de peladas realizadas
-- Próxima pelada agendada
-- Média de nível dos jogadores
-
-### 6️⃣ Perfil
-
-No menu **"Perfil"** você pode:
-- Editar seu nome e email
-- Ver informações da conta
+```env
+MONGODB_URI=
+JWT_SECRET=
+DATABASE_URL=
+```
 
 ---
 
-## 🌐 Endpoints da API
+# 📖 Manual do Organizador
 
-### Autenticação
-
-| Método | Endpoint | Descrição |
-|--------|----------|-----------|
-| POST | `/api/auth/register` | Cadastrar novo usuário |
-| POST | `/api/auth/login` | Fazer login |
-| PUT | `/api/auth/profile` | Atualizar perfil |
-| PUT | `/api/auth/password` | Alterar senha |
-
-### Jogadores
-
-| Método | Endpoint | Descrição |
-|--------|----------|-----------|
-| GET | `/api/players` | Listar jogadores |
-| POST | `/api/players` | Criar jogador |
-| PUT | `/api/players/:id` | Atualizar jogador |
-
-### Peladas
-
-| Método | Endpoint | Descrição |
-|--------|----------|-----------|
-| GET | `/api/matches` | Listar peladas |
-| GET | `/api/matches/:id` | Obter detalhes |
-| POST | `/api/matches` | Criar pelada |
-| PUT | `/api/matches/:id` | Atualizar pelada |
-| GET | `/api/matches/:id/players` | Listar inscritos |
-| POST | `/api/matches/:id/players` | Adicionar jogador |
-| PUT | `/api/matches/:id/players` | Atualizar lista |
-
-### Socket.IO Events
-
-| Evento | Direção | Descrição |
-|--------|---------|-----------|
-| `join-match` | Cliente → Servidor | Entrar em sala da pelada |
-| `update-list` | Cliente → Servidor | Notificar mudança na lista |
-| `list-updated` | Servidor → Cliente | Lista foi atualizada |
+## 1️⃣ Cadastro
+Crie sua conta de organizador.
 
 ---
 
-## 🔒 Segurança
-
-### Autenticação JWT
-- Todas as rotas protegidas requerem token JWT
-- Token é enviado no header `Authorization: Bearer <token>`
-- Expira após período configurado
-
-### Senhas
-- Criptografadas com bcrypt (10 rounds)
-- Mínimo de 7 caracteres
-- Nunca armazenadas em texto puro
-
-### CORS
-- Configurado para aceitar requisições do frontend
-- Pode ser restrito em produção
+## 2️⃣ Cadastro de Atletas
+Defina o nível técnico corretamente.
 
 ---
 
-## 🐛 Troubleshooting
+## 3️⃣ Criar Pelada
+Informe:
+- Local
+- Data
+- Valor
+- Número de atletas
 
-### Porta 3000 já está em uso
+---
+
+## 4️⃣ Lista de Presença
+Controle:
+- Presença
+- Pagamento
+- Ordem de chegada
+
+---
+
+## 5️⃣ Sorteio de Times
+O sistema gera automaticamente equipes balanceadas.
+
+---
+
+## 6️⃣ Partida Ao Vivo
+Controle:
+- Cronômetro
+- Placar
+- Gols
+- Cartões
+- Assistências
+
+---
+
+# 👥 Manual do Visitante
+
+## 📺 Acompanhar Partidas
+Os visitantes podem:
+- Ver placar ao vivo
+- Estatísticas
+- Ranking
+- Tabelas
+- Artilharia
+
+---
+
+## ⚡ Atualizações em Tempo Real
+Tudo sincronizado automaticamente via WebSocket.
+
+---
+
+# 🔌 API Endpoints
+
+## 🔐 Autenticação
+
+```http
+POST /api/register
+POST /api/token
+```
+
+---
+
+## 👤 Jogadores
+
+```http
+GET /api/jogadores
+POST /api/jogadores
+```
+
+---
+
+## ⚽ Peladas
+
+```http
+POST /api/peladas
+POST /api/peladas/{id}/sortear
+```
+
+---
+
+# 🛡️ Segurança
+
+## JWT
+Todas as rotas protegidas validam tokens.
+
+---
+
+## BCrypt
+Senhas nunca são salvas em texto puro.
+
+---
+
+## CORS
+Proteção contra acessos indevidos.
+
+---
+
+# 🛠️ Troubleshooting
+
+## Prisma no StackBlitz/Bolt.new
+Caso falhe:
 
 ```bash
-# Windows
-netstat -ano | findstr :3000
-taskkill /PID <PID> /F
-
-# Linux/Mac
-lsof -ti:3000 | xargs kill -9
+npx prisma generate
 ```
 
-### Erro ao instalar dependências
+---
 
-```bash
-# Limpar cache do npm
-npm cache clean --force
-
-# Reinstalar
-rm -rf node_modules package-lock.json
-npm install
-```
-
-### Frontend não carrega
-
-- Verifique se o servidor está rodando
-- Limpe o cache do navegador (Ctrl + Shift + Delete)
-- Verifique o console do navegador (F12) para erros
-
-### Socket.IO não conecta
-
-- Verifique se o servidor está acessível
-- Confirme que a porta 3000 não está bloqueada
-- Veja os logs do servidor no terminal
+## MongoDB Atlas
+Libere seu IP no painel do MongoDB Atlas.
 
 ---
 
-## 📦 Build para Produção
-
-### Backend
-
-Para produção, considere:
-
-1. Usar banco de dados real (MongoDB, PostgreSQL, etc.)
-2. Configurar variáveis de ambiente
-3. Usar PM2 para gerenciar o processo
-4. Configurar HTTPS
-5. Implementar rate limiting
-
-```bash
-# Instalar PM2
-npm install -g pm2
-
-# Iniciar com PM2
-cd backend
-pm2 start server.js --name futgestao
-
-# Ver logs
-pm2 logs futgestao
-
-# Reiniciar
-pm2 restart futgestao
-```
-
-### Frontend
-
-Para deploy:
-
-1. Hospede os arquivos HTML/CSS/JS em servidor web
-2. Configure CORS no backend para aceitar o domínio
-3. Use CDN para assets estáticos
-4. Minifique CSS e JS
+## Socket.IO
+Verifique:
+- Porta correta
+- CORS
+- URL do backend
 
 ---
 
-## 🔄 Próximas Funcionalidades
+# ✅ Checklist de Validação
 
-- [ ] Integração com banco de dados real (PostgreSQL/MongoDB)
-- [ ] Sistema de pagamento
-- [ ] Geração automática de times balanceados
-- [ ] Notificações por email/SMS
-- [ ] Estatísticas avançadas por jogador
-- [ ] Modo escuro
-- [ ] PWA (Progressive Web App)
-- [ ] Chat em tempo real
-- [ ] Histórico de confrontos
-
----
-
-## 📄 Licença
-
-Este projeto é de uso educacional e pode ser modificado e distribuído livremente.
+- [x] Cadastro/Login
+- [x] JWT
+- [x] Gestão de Jogadores
+- [x] Sistema de Estrelas
+- [x] Sorteio Balanceado
+- [x] Tempo Real
+- [x] WebSockets
+- [x] Cronômetro
+- [x] Controle Financeiro
+- [x] Campeonatos
+- [x] Ranking
+- [x] Deploy Vercel
 
 ---
 
-## 📞 Suporte
+# 🎁 Entregáveis Finais
 
-Para dúvidas ou problemas:
-
-1. Verifique a seção de Troubleshooting acima
-2. Revise os logs do servidor no terminal
-3. Inspecione o console do navegador (F12)
-4. Entre em contato com a equipe de desenvolvimento
-
----
-
-## 🎓 Aprendizados do Projeto
-
-Este projeto demonstra:
-
-- ✅ Arquitetura cliente-servidor separada
-- ✅ API RESTful bem estruturada
-- ✅ Autenticação e autorização
-- ✅ Comunicação em tempo real com WebSockets
-- ✅ Frontend responsivo sem frameworks
-- ✅ Boas práticas de organização de código
-- ✅ Manipulação de estado no cliente
-- ✅ Integração frontend-backend
+- Sistema completo de peladas
+- Campeonatos automáticos
+- Ranking e estatísticas
+- Controle financeiro
+- Sorteio inteligente
+- Painel ao vivo
+- WebSockets em tempo real
+- Deploy em produção
 
 ---
 
-**Desenvolvido com ❤️ pela Equipe FutGestão**
+# 📄 Licença
 
-*Versão 1.0.0 - Abril 2026*
+Projeto de uso educacional e profissional.
+
+Livre para:
+- estudar
+- modificar
+- distribuir
+- aprimorar
+
+---
+
+# 🏆 FutGestao
+
+Sistema moderno de gerenciamento de futebol amador desenvolvido com:
+- React
+- TypeScript
+- Node.js
+- Express
+- Socket.IO
+- MongoDB
+- Prisma
+- Tailwind CSS
+- Vercel

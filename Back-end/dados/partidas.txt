@@ -1,0 +1,13 @@
+# formato: id_time_casa, id_time_fora, gols_casa, gols_fora, status
+# status: agendada ou encerrada
+# substitua os ids pelos ids reais dos times no banco
+2, 3, 2, 1, encerrada
+2, 4, 0, 0, encerrada
+2, 5, 3, 1, encerrada
+2, 6, 1, 2, encerrada
+3, 4, 1, 1, encerrada
+3, 5, 2, 0, encerrada
+3, 6, 0, 3, encerrada
+4, 5, 1, 0, encerrada
+4, 6, 2, 2, encerrada
+5, 6, 1, 4, encerrada

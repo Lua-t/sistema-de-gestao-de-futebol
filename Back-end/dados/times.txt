@@ -1,0 +1,7 @@
+# formato: nome_time, id_campeonato
+# substitua o id_campeonato pelo id do seu campeonato
+Flamengo, 1
+Palmeiras, 1
+São Paulo, 1
+Corinthians, 1
+Grêmio, 1

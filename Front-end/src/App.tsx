@@ -7,17 +7,24 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import { AuthProvider, useAuth } from "./context/AuthContext";
+import { ThemeProvider } from "./context/ThemeContext";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ForgotPassword from "./pages/ForgotPassword";
 import Dashboard from "./pages/Dashboard";
 import Players from "./pages/Players";
-import Matches from "./pages/Matches";
-import MatchDetail from "./pages/MatchDetail";
+import Peladas from "./pages/Peladas";
+import PeladaDetail from "./pages/PeladaDetail";
+import PeladaSorteio from "./pages/PeladaSorteio";
+import PeladaLive from "./pages/PeladaLive";
+import PlayerProfile from "./pages/PlayerProfile";
 import Profile from "./pages/Profile";
 
 import Teams from "./pages/Teams";
 import Championships from "./pages/Championships";
+import ChampionshipDetail from "./pages/ChampionshipDetail";
+import PublicChampionships from "./pages/PublicChampionships";
+import PublicChampionship from "./pages/PublicChampionship";
 
 import Layout from "./components/Layout";
 
@@ -42,9 +49,13 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
 function AppRoutes() {
   return (
     <Routes>
+      {/* Páginas públicas (RF65–RF67) */}
+      <Route path="/c" element={<PublicChampionships />} />
+      <Route path="/c/:id" element={<PublicChampionship />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/forgot-password" element={<ForgotPassword />} />
+      <Route path="/peladas/:id/live" element={<PeladaLive />} />
       <Route
         path="/"
         element={
@@ -78,18 +89,38 @@ function AppRoutes() {
         }
       />
       <Route
-        path="/matches"
+        path="/peladas"
         element={
           <ProtectedRoute>
-            <Matches />
+            <Peladas />
           </ProtectedRoute>
         }
       />
       <Route
-        path="/matches/:id"
+        path="/peladas/:id"
         element={
           <ProtectedRoute>
-            <MatchDetail />
+            <PeladaDetail />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/peladas/:id/sorteio"
+        element={
+          <ProtectedRoute>
+            <PeladaSorteio />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/players/:id"
+        element={<PlayerProfile />}
+      />
+      <Route
+        path="/championships/:id"
+        element={
+          <ProtectedRoute>
+            <ChampionshipDetail />
           </ProtectedRoute>
         }
       />
@@ -108,11 +139,13 @@ function AppRoutes() {
 
 export default function App() {
   return (
-    <AuthProvider>
-      <Router>
-        <AppRoutes />
-        <Toaster position="top-right" />
-      </Router>
-    </AuthProvider>
+    <ThemeProvider>
+      <AuthProvider>
+        <Router>
+          <AppRoutes />
+          <Toaster position="top-right" />
+        </Router>
+      </AuthProvider>
+    </ThemeProvider>
   );
 }
