@@ -112,7 +112,7 @@ def _calcular_tabela(inscricoes, jogos, campeonato):
 
     tabela.sort(key=_pre_cd_key, reverse=True)
 
-    # RF61.2: confronto_direto — dentro de grupos empatados, re-ordena por resultado direto
+    # confronto_direto — dentro de grupos empatados, re-ordena por resultado direto
     if 'confronto_direto' in criterios:
         from itertools import groupby
         tabela_novo = []
@@ -715,7 +715,7 @@ class JogoCampeonatoDetailView(APIView):
         if jogo.campeonato.organizador != request.user:
             return Response({'detail': 'Sem permissão.'}, status=status.HTTP_403_FORBIDDEN)
 
-        # RF55: verifica conflito de horário ao agendar a partida (janela de 90 min)
+        # verifica conflito de horário ao agendar a partida (janela de 90 min)
         nova_data_str = request.data.get('data')
         if nova_data_str:
             from datetime import timedelta
@@ -831,7 +831,7 @@ class ArtilhariaView(APIView):
             .annotate(gols=Count('id'), jogos_marcou=Count('jogo', distinct=True))
             .order_by('-gols')
         )
-        # Mapa auxiliar de assistências por jogador (RF58.3 / RF64)
+        # Mapa auxiliar de assistências por jogador 
         assistentes = (
             Gol.objects
             .filter(jogo__campeonato=campeonato, assistencia__isnull=False)
@@ -855,7 +855,7 @@ class ArtilhariaView(APIView):
 
 
 class AssistenciasView(APIView):
-    # Ranking de assistências por jogador no campeonato — público (RF67.4)
+    # Ranking de assistências por jogador no campeonato — público 
     permission_classes = [AllowAny]
 
     def get(self, request, pk):
@@ -1064,7 +1064,7 @@ class JogadorTimeCampeonatoDetailView(APIView):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
-# ── Páginas públicas (RF65–RF67) ───────────────────────────────────────────────
+# ── Páginas públicas ───────────────────────────────────────────────
 
 class PublicCampeonatosView(APIView):
     # Lista todos os campeonatos não rascunho para visitantes não autenticados
@@ -1087,7 +1087,7 @@ class PublicCampeonatoDetailView(APIView):
         return Response(CampeonatoSerializer(campeonato).data)
 
 
-# ── Boletim / Gols / Cartões (RF57–RF60) ──────────────────────────────────────
+# ── Boletim / Gols / Cartões  ──────────────────────────────────────
 
 def _recalcular_placar(jogo):
     # Reconta os gols registrados e atualiza os campos gols_casa/gols_fora da partida
@@ -1229,7 +1229,7 @@ class BoletimView(APIView):
 
 
 class GolListCreateView(APIView):
-    # Registra um gol em uma partida e recalcula o placar automaticamente (RF57.1)
+    # Registra um gol em uma partida e recalcula o placar automaticamente 
     def post(self, request, pk):
         try:
             jogo = JogoCampeonato.objects.get(pk=pk, campeonato__organizador=request.user)
