@@ -474,4 +474,4 @@ def auto_gerar_partidas(sender, instance, created, **kwargs):
     elif camp.formato == 'grupos_mata_mata':
         limite = Campeonato.TIMES_POR_TIPO_MM.get(camp.tipo)
         if limite and total == limite and limite % camp.num_grupos == 0:
-            _distribuir_grupos(camp)  # organizer reviews groups before games are generated
+            _distribuir_grupos(camp)  # O organizador analisa os grupos antes que os jogos sejam gerados.
