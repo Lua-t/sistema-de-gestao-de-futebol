@@ -2,15 +2,14 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import {
-  Users, Trophy, Calendar, Star,
+  Users, Trophy, Star,
   PlusCircle, ChevronRight, Loader2, Shield,
 } from "lucide-react";
 import api from "../services/api";
 import { cn } from "../lib/utils";
 
-interface PlayerSummary       { id: string; nome: string; nivel_estrelas: number; ativo: boolean; }
-interface TeamSummary         { id: string; nome: string; escudo: string; escudo_url: string; cor: string; total_jogadores: number; }
-interface PeladaSummary       { id: string; titulo: string; data_hora: string; local: string; status: string; }
+interface PlayerSummary { id: string; nome: string; nivel_estrelas: number; ativo: boolean; }
+interface TeamSummary   { id: string; nome: string; escudo: string; escudo_url: string; cor: string; total_jogadores: number; }
 
 const TeamAvatar = ({ team, size = 10 }: { team: Pick<TeamSummary, "nome" | "escudo" | "escudo_url" | "cor">; size?: number }) => {
   const src = team.escudo || team.escudo_url;
@@ -27,21 +26,17 @@ const TeamAvatar = ({ team, size = 10 }: { team: Pick<TeamSummary, "nome" | "esc
 const Dashboard = () => {
   const { user } = useAuth();
   const navigate = useNavigate();
-  const [players,  setPlayers]  = useState<PlayerSummary[]>([]);
-  const [teams,    setTeams]    = useState<TeamSummary[]>([]);
-  const [peladas,  setPeladas]  = useState<PeladaSummary[]>([]);
+  const [players,   setPlayers]  = useState<PlayerSummary[]>([]);
+  const [teams,     setTeams]    = useState<TeamSummary[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     Promise.all([
       api.get("/jogadores/"),
       api.get("/times/"),
-      api.get("/peladas/").catch(() => ({ data: [] })),
-    ]).then(([pRes, tRes, pelRes]) => {
+    ]).then(([pRes, tRes]) => {
       setPlayers(Array.isArray(pRes.data) ? pRes.data : []);
       setTeams(Array.isArray(tRes.data) ? tRes.data : []);
-      const all: PeladaSummary[] = Array.isArray(pelRes.data) ? pelRes.data : [];
-      setPeladas(all.filter(p => p.status !== "encerrada" && p.status !== "finalizada").slice(0, 5));
     }).catch(() => {}).finally(() => setIsLoading(false));
   }, []);
 
@@ -59,10 +54,10 @@ const Dashboard = () => {
     : "—";
 
   const stats = [
-    { name: "Meus Jogadores", value: players.length, icon: Users,    color: "text-green-500",  bg: "bg-green-500/10"  },
-    { name: "Jogadores Ativos", value: ativos,        icon: Users,    color: "text-blue-500",   bg: "bg-blue-500/10"   },
-    { name: "Meus Times",      value: teams.length,   icon: Shield,   color: "text-purple-500", bg: "bg-purple-500/10" },
-    { name: "Nível Médio",     value: nivelMed,       icon: Star,     color: "text-amber-500",  bg: "bg-amber-500/10"  },
+    { name: "Meus Jogadores",   value: players.length, icon: Users,  color: "text-green-500",  bg: "bg-green-500/10"  },
+    { name: "Jogadores Ativos", value: ativos,          icon: Users,  color: "text-blue-500",   bg: "bg-blue-500/10"   },
+    { name: "Meus Times",       value: teams.length,    icon: Shield, color: "text-purple-500", bg: "bg-purple-500/10" },
+    { name: "Nível Médio",      value: nivelMed,        icon: Star,   color: "text-amber-500",  bg: "bg-amber-500/10"  },
   ];
 
   return (
@@ -77,10 +72,6 @@ const Dashboard = () => {
           <Link to="/players"
             className="inline-flex items-center px-4 py-2 border border-app-border rounded-md text-sm font-medium text-app-text bg-app-card hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all shadow-sm">
             <Users className="mr-2 h-4 w-4" /> Jogadores
-          </Link>
-          <Link to="/peladas"
-            className="inline-flex items-center px-4 py-2 border border-transparent rounded-md text-sm font-medium text-white bg-green-600 hover:bg-green-700 transition-all shadow-sm">
-            <PlusCircle className="mr-2 h-4 w-4" /> Minhas Peladas
           </Link>
           <Link to="/championships"
             className="inline-flex items-center px-4 py-2 border border-transparent rounded-md text-sm font-medium text-white bg-amber-600 hover:bg-amber-500 transition-all shadow-sm">
@@ -205,47 +196,6 @@ const Dashboard = () => {
           </div>
         </div>
 
-      </div>
-
-      {/* Próximas Peladas */}
-      <div className="space-y-4">
-        <div className="flex items-center justify-between">
-          <h2 className="text-lg font-bold text-app-text uppercase tracking-tight flex items-center gap-2">
-            <Calendar className="w-4 h-4 text-blue-500" /> Próximas Peladas
-          </h2>
-          <Link to="/peladas" className="text-sm text-blue-500 hover:underline flex items-center">
-            Ver todas <ChevronRight className="h-4 w-4" />
-          </Link>
-        </div>
-        <div className="bg-app-card border border-app-border rounded-lg overflow-hidden shadow-sm">
-          <div className="grid grid-cols-4 bg-zinc-100 dark:bg-zinc-800/50 border-b border-app-border p-3">
-            {["Pelada","Data","Local","Status"].map(h => (
-              <span key={h} className="text-[10px] font-bold text-app-text-muted uppercase tracking-widest font-mono">{h}</span>
-            ))}
-          </div>
-          {peladas.length > 0 ? (
-            peladas.map((match) => (
-              <Link key={match.id} to={`/peladas/${match.id}`}
-                className="grid grid-cols-4 p-4 border-b last:border-b-0 border-app-border hover:bg-zinc-100 dark:hover:bg-zinc-800/50 transition-colors">
-                <span className="text-sm font-medium text-app-text truncate">{match.titulo}</span>
-                <span className="text-sm text-app-text-muted font-mono">
-                  {match.data_hora ? new Date(match.data_hora).toLocaleDateString("pt-BR") : "—"}
-                </span>
-                <span className="text-sm text-app-text font-semibold truncate">{match.local}</span>
-                <span className={cn(
-                  "text-[10px] font-bold uppercase tracking-widest self-center px-2 py-1 rounded-full w-fit",
-                  match.status === "agendada" ? "bg-blue-600/20 text-blue-500" : "bg-green-600/20 text-green-500"
-                )}>
-                  {match.status}
-                </span>
-              </Link>
-            ))
-          ) : (
-            <div className="p-8 text-center text-app-text-muted italic font-serif">
-              Nenhuma pelada próxima.
-            </div>
-          )}
-        </div>
       </div>
     </div>
   );

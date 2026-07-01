@@ -184,7 +184,7 @@ const PlayerProfile = () => {
             </h2>
             
             <p className="text-xs text-app-text-muted mb-6 leading-relaxed">
-              Resumo geral de partidas ganhas, empatadas ou perdidas pelo jogador ao longo das peladas finalizadas pelo organizador.
+              Resumo geral de partidas do jogador nos campeonatos.
             </p>
 
             <div className="flex gap-1 h-4 w-full bg-app-bg rounded-full overflow-hidden mb-8 shadow-inner border border-app-border">

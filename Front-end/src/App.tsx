@@ -13,10 +13,6 @@ import Register from "./pages/Register";
 import ForgotPassword from "./pages/ForgotPassword";
 import Dashboard from "./pages/Dashboard";
 import Players from "./pages/Players";
-import Peladas from "./pages/Peladas";
-import PeladaDetail from "./pages/PeladaDetail";
-import PeladaSorteio from "./pages/PeladaSorteio";
-import PeladaLive from "./pages/PeladaLive";
 import PlayerProfile from "./pages/PlayerProfile";
 import Profile from "./pages/Profile";
 
@@ -55,7 +51,6 @@ function AppRoutes() {
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/forgot-password" element={<ForgotPassword />} />
-      <Route path="/peladas/:id/live" element={<PeladaLive />} />
       <Route
         path="/"
         element={
@@ -85,30 +80,6 @@ function AppRoutes() {
         element={
           <ProtectedRoute>
             <Players />
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/peladas"
-        element={
-          <ProtectedRoute>
-            <Peladas />
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/peladas/:id"
-        element={
-          <ProtectedRoute>
-            <PeladaDetail />
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/peladas/:id/sorteio"
-        element={
-          <ProtectedRoute>
-            <PeladaSorteio />
           </ProtectedRoute>
         }
       />
