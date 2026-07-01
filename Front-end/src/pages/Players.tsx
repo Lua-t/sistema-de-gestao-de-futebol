@@ -114,7 +114,7 @@ const Players = () => {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <h1 className="text-2xl font-bold text-app-text">Meus Jogadores</h1>
-          <p className="text-app-text-muted">Gerencie seu banco de talentos para as peladas.</p>
+          <p className="text-app-text-muted">Gerencie seu banco de talentos para os campeonatos.</p>
         </div>
         <button
           onClick={() => openModal()}
@@ -260,7 +260,7 @@ const Players = () => {
                   onChange={(e) => setAtivo(e.target.checked)}
                 />
                 <label htmlFor="ativo" className="ml-2 block text-sm text-app-text-muted">
-                  Jogador Ativo (disponível para sorteio)
+                  Jogador Ativo
                 </label>
               </div>
 

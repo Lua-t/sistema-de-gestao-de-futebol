@@ -4,7 +4,6 @@ import { useAuth } from "../context/AuthContext";
 import {
   LayoutDashboard,
   Users,
-  Calendar,
   Trophy,
   UserCircle,
   LogOut,
@@ -26,7 +25,6 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     { name: "Dashboard",       href: "/",             icon: LayoutDashboard },
     { name: "Meus Jogadores",  href: "/players",      icon: Users           },
     { name: "Meus Times",      href: "/teams",        icon: Shield          },
-    { name: "Minhas Peladas",  href: "/peladas",      icon: Calendar        },
     { name: "Campeonatos",     href: "/championships",icon: Trophy          },
     { name: "Página Pública",  href: "/c",            icon: Globe           },
     { name: "Perfil",          href: "/profile",      icon: UserCircle      },
