@@ -149,7 +149,7 @@ class TimeCampeonatoSerializer(serializers.ModelSerializer):
         model = TimeCampeonato
         fields = ('id', 'time', 'time_nome', 'time_cor', 'time_escudo',
                   'total_jogadores_campeonato', 'campeonato', 'grupo')
-        validators = []  # validação de unicidade tratada em validate() com mensagem em PT-BR
+        validators = []  # validação de unicidade tratada em validate()
 
     def get_total_jogadores_campeonato(self, obj):
         return obj.elenco_campeonato.count()
